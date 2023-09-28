@@ -38,11 +38,11 @@ userRoute.post("/login", async (req, res) => {
                     const token = jwt.sign({ userId: user._id, userName: user.username }, process.env.SecretKey)
                     return res.status(200).json({ msg: "login successful", token })
                 } else {
-                    return res.status(400).json({ error: "wrong credentials" })
+                    return res.status(400).json({ msg: "wrong credentials" })
                 }
             })
         } else {
-            return res.status(400).json({ error: "user not exist" })
+            return res.status(400).json({ msg: "user not exist" })
         }
     } catch (err) {
         return res.status(400).json({ error: err.message })
